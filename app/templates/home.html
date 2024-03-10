@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Text Summarization</h2>
+    <form method="POST" action="">
+        <div class="form-group">
+            <label for="inputText">Enter Text:</label>
+            <textarea class="form-control" id="inputText" name="inputText" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Summarize</button>
+        </form>    
+        {% if summarized_text %}
+            <div class="mt-4">
+                <h4>Summary:</h4>
+                <textarea class="form-control" rows="5" readonly>{{ summarized_text }}</textarea>
+            </div>
+        {% endif %}
+{% endblock %}

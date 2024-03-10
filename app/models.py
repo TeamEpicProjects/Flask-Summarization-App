@@ -1,0 +1,19 @@
+# app/models.py
+
+from app import db
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    password = db.Column(db.String(60), nullable=False)
+
+    def __repr__(self):
+        return f"User('{self.username}')"
+
+class SummarizedText(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    input_text = db.Column(db.Text, nullable=False)
+    summarized_text = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return f"SummarizedText('{self.input_text}', '{self.summarized_text}')"
