@@ -4,15 +4,29 @@
     <h2>Text Summarization</h2>
     <form method="POST" action="">
         <div class="form-group">
-            <label for="inputText">Enter Text:</label>
+            <label for="inputText">Enter Text: (please enter total words in range 30 to 2000 to get optimum result)</label>
             <textarea class="form-control" id="inputText" name="inputText" rows="5"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Summarize</button>
-        </form>    
-        {% if summarized_text %}
-            <div class="mt-4">
-                <h4>Summary:</h4>
-                <textarea class="form-control" rows="5" readonly>{{ summarized_text }}</textarea>
-            </div>
-        {% endif %}
+    </form>    
+
+    {% if summarized_text %}
+        <div class="mt-4">
+            <h4>Summary:</h4>
+            <textarea class="form-control" rows="5" readonly>{{ summarized_text }}</textarea>
+        </div>
+    {% endif %}
+
+    {% if interactions %}
+        <h3>Interaction History:</h3>
+        <ul>
+            {% for interaction in interactions %}
+            <li>
+                <b>Input Text:</b> {{ interaction.input_text }}<br>
+                <b>Summarized Text:</b> {{ interaction.summarized_text }}<br>
+                <b>Time:</b> {{ interaction.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
