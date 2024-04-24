@@ -78,4 +78,4 @@ summarization.
 
 
 Contributor(s):
-● Devesh Sharm
+● Devesh Sharma
